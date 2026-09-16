@@ -1,0 +1,34 @@
+name = "baseera-api"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "baseera-db"
+database_id = "REPLACE_WITH_REAL_D1_ID" # `wrangler d1 create baseera-db`
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "REPLACE_WITH_REAL_KV_ID" # `wrangler kv namespace create CACHE`
+
+[[r2_buckets]]
+binding = "STORAGE"
+bucket_name = "baseera-storage"
+
+[[queues.producers]]
+binding = "JOB_QUEUE"
+queue = "baseera-jobs"
+
+[[queues.consumers]]
+queue = "baseera-jobs"
+max_batch_size = 10
+max_batch_timeout = 30
+
+# Secrets (set via `wrangler secret put <NAME>`, never committed):
+# APIFY_API_TOKEN
+# OPENROUTER_API_KEY
+# SESSION_SECRET
+
+[vars]
+ENVIRONMENT = "development"
