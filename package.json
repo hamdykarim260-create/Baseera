@@ -1,0 +1,24 @@
+{
+  "name": "baseera",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply baseera-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply baseera-db --remote",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hono": "^4.6.0",
+    "drizzle-orm": "^0.36.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250101.0",
+    "drizzle-kit": "^0.28.0",
+    "typescript": "^5.6.0",
+    "wrangler": "^3.90.0"
+  }
+}
